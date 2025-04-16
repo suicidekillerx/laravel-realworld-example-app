@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crm-laravel
+  labels:
+    app: crm-laravel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crm-laravel
+  template:
+    metadata:
+      labels:
+        app: crm-laravel
+    spec:
+      containers:
+        - name: crm-laravel
+          image: iyedhosni743/crm-laravel:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
